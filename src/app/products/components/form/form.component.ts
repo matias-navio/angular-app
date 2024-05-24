@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { FormsModule } from '@angular/forms';
 
@@ -12,7 +12,9 @@ import { FormsModule } from '@angular/forms';
 
 export class FormComponent {
 
-  product: Product = {
+  // esto reia lo contrario de Output, en vez de que el hijo le pase al padre
+  // en este caso traemos el objeto selecionado del padre y se lo poblamos al hijo
+  @Input() product: Product = {
     id: 0,
     name: '',
     description: '',
@@ -28,5 +30,4 @@ export class FormComponent {
     this.newProdcutEvent.emit(this.product);
     console.log(this.product);
   }
-
 }

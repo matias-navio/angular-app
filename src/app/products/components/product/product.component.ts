@@ -19,6 +19,8 @@ export class ProductComponent implements OnInit{
 
   products: Product[] = [];
 
+  productSelected: Product = new Product();
+
   // este método se ejecuta cuando se crea el componente por primera vez unicamente
   ngOnInit(): void{
     // nos estamos suscribiendo a la API Observable para obtener los datos que devuelve
@@ -29,8 +31,24 @@ export class ProductComponent implements OnInit{
     })
   }
 
-  addProduct(prod : Product) : void{
-    prod.id = new Date().getTime();
-    this.products.push(prod);    
+  addProduct(product : Product) : void{
+    // si id el mayor a 0 es porque vamos a editarlo
+    if(product.id > 0){
+
+      this.products = this.products.map(prod => {
+        if(prod.id == product.id){
+          return {...product};
+        }
+        return prod;
+
+      });
+    } else{
+      product.id = new Date().getTime();
+      this.products.push(product);    
+    }
   }
+
+  onEditProduct(prodRow: Product): void{
+    this.productSelected = prodRow;
+  } 
 }

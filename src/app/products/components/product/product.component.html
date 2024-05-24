@@ -1,7 +1,9 @@
 
 <h1> {{title}} </h1>
 
-<product-form (newProdcutEvent)="addProduct($event)"></product-form>
+<!-- con (newProdcutEvent) este evento al momento de apretar el boton de agrega el producto creado a la tabla -->
+<!-- con [product] poblamos el objeto del hijo con el objeto seleccionado del padre -->
+<product-form (newProdcutEvent)="addProduct($event)" [product] = "productSelected"></product-form>
 
 @if (products.length > 0) {
     <table>
@@ -11,6 +13,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +23,7 @@
                     <td> {{product.name}} </td>
                     <td> {{product.description}} </td>
                     <td> {{product.price}} </td>
+                    <td> <button (click)="onEditProduct(product)">Edit</button> </td>
                 </tr>
             }
         </tbody>
