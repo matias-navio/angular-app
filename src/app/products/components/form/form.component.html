@@ -1,1 +1,19 @@
-<p>form works!</p>
+<form action="" class="form-product" (ngSubmit)="onSubmit()">
+
+    <div class="campos-form">
+        <label for="">Name</label>
+        <input class="input-prod" type="text" placeholder="iPhone" name="name" [(ngModel)]="product.name">
+    </div>
+    <div class="campos-form">
+        <label for="">Description</label>
+        <input class="input-prod" type="text" placeholder="The best product" name="description" [(ngModel)]="product.description">
+    </div>
+    <div class="campos-form">
+        <label for="">Price</label>
+        <input class="input-prod" type="text" placeholder="1000" name="price" [(ngModel)]="product.price">
+    </div>
+    <div>
+        <button class="btn-save" type="submit">Save</button>
+    </div>
+
+</form>

@@ -1,5 +1,8 @@
 
 <h1> {{title}} </h1>
+
+<product-form (newProdcutEvent)="addProduct($event)"></product-form>
+
 @if (products.length > 0) {
     <table>
         <thead>

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
+import { FormComponent } from "../form/form.component";
 
 @Component({
-  selector: 'app-product',
-  standalone: true,
-  imports: [],
-  templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+    selector: 'app-product',
+    standalone: true,
+    templateUrl: './product.component.html',
+    styleUrl: './product.component.css',
+    imports: [FormComponent]
 })
 
 export class ProductComponent implements OnInit{
@@ -26,6 +27,10 @@ export class ProductComponent implements OnInit{
       // le asignamos los productos que vienen del backend 
       this.products = productsBack;
     })
-    
+  }
+
+  addProduct(prod : Product) : void{
+    prod.id = new Date().getTime();
+    this.products.push(prod);    
   }
 }
