@@ -11,6 +11,8 @@ import { Product } from '../../models/product';
 })
 
 export class ProductComponent implements OnInit{
+
+  title: string = 'Lista de productos';
   // esta es la manera de declarar un atributo y a la vez inyectarlo en el constructor
   constructor(private service: ProductService){}
 
