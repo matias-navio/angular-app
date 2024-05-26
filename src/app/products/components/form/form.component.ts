@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 
 export class FormComponent {
 
-  // esto reia lo contrario de Output, en vez de que el hijo le pase al padre
+  // esto haeia lo contrario de Output, en vez de que el hijo le pase al padre
   // en este caso traemos el objeto selecionado del padre y se lo poblamos al hijo
   @Input() product: Product = {
     id: 0,
@@ -28,6 +28,15 @@ export class FormComponent {
   // método para enviar datos de los inputs y agregarlos a las tabla
   onSubmit(): void{
     this.newProdcutEvent.emit(this.product);
-    console.log(this.product);
   }
+
+  resetForm(): void{
+    this.product = {
+      id: 0,
+      name: '',
+      description: '',
+      price: 0
+    }
+  }
+
 }

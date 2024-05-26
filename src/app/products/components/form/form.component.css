@@ -1,0 +1,62 @@
+.form-product{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.campos-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: .2rem;
+}
+
+.campos-form label{
+    font-size: 14px;
+    color: rgb(58, 112, 206);
+    font-weight: 900;
+}
+
+.input-prod{
+    padding: .2rem;
+}
+
+.btns{
+    display: flex;
+    gap: 1rem;
+}
+
+.btn{
+    padding: 5px 7px;
+}
+
+.btn-save{
+    background-color: rgb(58, 112, 206);
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn-save:hover{
+    box-shadow: 0 0 5px rgb(58, 112, 206);
+    transform: scale(1.1);
+    transition: .2s linear all;
+}
+
+.btn-limpiar{
+    border: none;
+    background-color: gray;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn-limpiar:hover{
+    box-shadow: 0 0 5px gray;
+    transform: scale(1.1);
+    transition: .2s linear all;
+}
+
+

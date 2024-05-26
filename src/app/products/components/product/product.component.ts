@@ -51,4 +51,10 @@ export class ProductComponent implements OnInit{
   onEditProduct(prodRow: Product): void{
     this.productSelected = prodRow;
   } 
+
+  onRemoveProduct(id: number): void{
+    // este filter lo que hace es dejar pasar todos los products que tengan el id distinto al seleccionado
+    // si el id es igual quiere decir que lo filtra y hace una nueva lista sin ese product
+    this.products = this.products.filter(product => product.id != id );
+  }
 }

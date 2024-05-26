@@ -13,10 +13,11 @@
         <label for="">Price</label>
         <input class="input-prod" type="text" placeholder="1000" name="price" [(ngModel)]="product.price">
     </div>
-    <div>
+    <div class="btns">
         <!-- si el id del producto es mayor a 0 es porque vamos a actualizar, entonces ponemos update,
         si no vamos a crear uno nuevo, ponemos create -->
-        <button class="btn-save" type="submit"> {{product.id>0? 'Update' : 'Create'}} </button>
+        <button class="btn btn-save" type="submit"> {{product.id>0? 'Update' : 'Create'}} </button>
+        <button class="btn btn-limpiar" type="button" (click)="resetForm()"> Limpiar </button>
     </div>
 
 </form>

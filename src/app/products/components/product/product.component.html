@@ -1,35 +1,40 @@
 
 <h1> {{title}} </h1>
 
-<!-- con (newProdcutEvent) este evento al momento de apretar el boton de agrega el producto creado a la tabla -->
-<!-- con [product] poblamos el objeto del hijo con el objeto seleccionado del padre -->
-<product-form (newProdcutEvent)="addProduct($event)" [product] = "productSelected"></product-form>
+<div class="products">
 
-@if (products.length > 0) {
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Edit</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (product of products; track $index) {
+    <!-- con (newProdcutEvent) este evento al momento de apretar el boton de agrega el producto creado a la tabla -->
+    <!-- con [product] poblamos el objeto del hijo con el objeto seleccionado del padre -->
+    <product-form class="container-form" (newProdcutEvent)="addProduct($event)" [product] = "productSelected"></product-form>
+
+    @if (products.length > 0) {
+        <table class="table">
+            <thead>
                 <tr>
-                    <td> {{$index + 1}} </td>
-                    <td> {{product.name}} </td>
-                    <td> {{product.description}} </td>
-                    <td> {{product.price}} </td>
-                    <td> <button (click)="onEditProduct(product)">Edit</button> </td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}@else {
-    <div class="prod-vacio">
-        No hay productos en la lista!
-    </div>
-}
+            </thead>
+            <tbody>
+                @for (product of products; track $index) {
+                    <tr>
+                        <td> {{$index + 1}} </td>
+                        <td> {{product.name}} </td>
+                        <td> {{product.description}} </td>
+                        <td> {{product.price}} </td>
+                        <td> <button class="btn btn-edit" (click)="onEditProduct(product)">Edit</button> </td>
+                        <td> <button class="btn btn-remove" (click)="onRemoveProduct(product.id)">Remove</button> </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }@else {
+        <div class="prod-vacio">
+            No hay productos en la lista!
+        </div>
+    }
+</div>
