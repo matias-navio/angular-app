@@ -28,15 +28,11 @@ export class FormComponent {
   // método para enviar datos de los inputs y agregarlos a las tabla
   onSubmit(): void{
     this.newProdcutEvent.emit(this.product);
+    this.resetForm();
   }
 
   resetForm(): void{
-    this.product = {
-      id: 0,
-      name: '',
-      description: '',
-      price: 0
-    }
-  }
+    this.product = new Product();
+  } 
 
 }

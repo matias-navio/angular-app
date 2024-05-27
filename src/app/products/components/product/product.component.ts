@@ -49,7 +49,8 @@ export class ProductComponent implements OnInit{
   }
 
   onEditProduct(prodRow: Product): void{
-    this.productSelected = prodRow;
+    // esto toma la referencia original y la clona, para que no se actualice en tiempo real
+    this.productSelected = {... prodRow};
   } 
 
   onRemoveProduct(id: number): void{

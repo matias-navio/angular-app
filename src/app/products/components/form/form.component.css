@@ -59,4 +59,9 @@
     transition: .2s linear all;
 }
 
+.message-error{
+    color: red;
+    font-size: 12px;
+}
+
 

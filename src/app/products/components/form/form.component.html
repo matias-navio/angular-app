@@ -1,23 +1,69 @@
 
-<form action="" class="form-product" (ngSubmit)="onSubmit()">
+<form class="form-product" (ngSubmit)="onSubmit()" #productForm="ngForm">
 
     <div class="campos-form">
         <label for="">Name</label>
-        <input class="input-prod" type="text" placeholder="iPhone" name="name" [(ngModel)]="product.name">
+        <input class="input-prod" 
+            type="text" 
+            placeholder="iPhone" 
+            name="name" 
+            [(ngModel)]="product.name" 
+            #name="ngModel"
+            required
+            minlength="5"
+        >
+        <!-- manera de validar en angular, si el nombre es invalido, esta sucio o se toca fuera del campo -->
+        @if (name.invalid && (name.dirty || name.touched)) {
+            @if (name.errors!['required']) {
+                <span class="message-error">campo obligatorio</span>
+            }
+            @if (name.errors!['minlength']) {
+                <span class="message-error">5 caracteres como mínimo</span>
+            }
+        }
     </div>
     <div class="campos-form">
         <label for="">Description</label>
-        <input class="input-prod" type="text" placeholder="The best product" name="description" [(ngModel)]="product.description">
+        <input class="input-prod" 
+            type="text" 
+            placeholder="The best product" 
+            name="description" 
+            [(ngModel)]="product.description"
+            #description="ngModel"
+            required
+        >
+        @if (description.invalid && (description.dirty || description.touched)) {
+            @if (description.errors!['required']) {
+                <span class="message-error">campo obligatorio</span>
+            }
+        }
     </div>
     <div class="campos-form">
         <label for="">Price</label>
-        <input class="input-prod" type="text" placeholder="1000" name="price" [(ngModel)]="product.price">
+        <input 
+            class="input-prod" 
+            type="text" 
+            placeholder="1000" 
+            name="price" 
+            [(ngModel)]="product.price"
+            #price="ngModel"
+            required
+        >
+        @if (price.invalid && (price.dirty || price.touched)) {
+            @if (price.errors!['required']) {
+                <span class="message-error">campo obligatorio</span>
+            }        
+        }
     </div>
     <div class="btns">
         <!-- si el id del producto es mayor a 0 es porque vamos a actualizar, entonces ponemos update,
         si no vamos a crear uno nuevo, ponemos create -->
-        <button class="btn btn-save" type="submit"> {{product.id>0? 'Update' : 'Create'}} </button>
-        <button class="btn btn-limpiar" type="button" (click)="resetForm()"> Limpiar </button>
+        <button 
+            [disabled]="!productForm.valid"
+            class="btn btn-save" 
+            type="submit" > {{product.id>0? 'Update' : 'Create'}} 
+        </button>
+        <button class="btn btn-limpiar" type="button" (click)="resetForm()"> Clean </button>
     </div>
 
 </form>
