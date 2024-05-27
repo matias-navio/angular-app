@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'product-form',
@@ -26,9 +26,11 @@ export class FormComponent {
   @Output() newProdcutEvent = new EventEmitter();
 
   // método para enviar datos de los inputs y agregarlos a las tabla
-  onSubmit(): void{
-    this.newProdcutEvent.emit(this.product);
-    this.resetForm();
+  onSubmit(productForm: NgForm): void{
+    if(productForm.valid){
+      this.newProdcutEvent.emit(this.product);
+    }
+    productForm.resetForm();
   }
 
   resetForm(): void{
