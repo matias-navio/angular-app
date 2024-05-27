@@ -71,8 +71,9 @@ h1{
     text-align: center;
     padding: 1rem 0;
     height: 30%;
-    border: 1px solid rgba(255, 0, 0, 0.635);
+    width: 70%;
+    border: 1px solid rgba(255, 0, 0, 0.524);
     background-color: rgb(255, 118, 118);
-    color: red;
+    color: rgba(255, 0, 0, 0.637);
 }
 
